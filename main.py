@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-class UserSearch(BaseModel):
+class Artist(BaseModel):
     artistName: str
 
 @app.get("/")
@@ -31,7 +31,7 @@ async def root():
     return {"message": "Hello. Welcome to ScrapeAPI!"}
 
 @app.post("/artists/")
-async def create_artist(data: UserSearch):
+async def create_artist(data: Artist):
     artist_name = data.artistName
     print('Artist name: {}'.format(artist_name))
     doc_ref = db.collection('artists').document(artist_name)
