@@ -142,7 +142,7 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--dns-prefetch-disable")
 chrome_options.add_argument("--disable-gpu")
-driver = webdriver.Chrome(options=chrome_options, service=ser)
+driver = uc.Chrome(options=chrome_options)
 print("Driver Initialized")
 #driver.set_page_load_timeout(10)
 driver.set_page_load_timeout(15)
@@ -152,15 +152,6 @@ driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () =>
 artist = sys.argv[1]
 
 url = f"https://genius.com/search?q={artist}"
-
-stealth(driver,
-        languages=["en-US", "en"],
-        vendor="Google Inc.",
-        platform="Win32",
-        webgl_vendor="Intel Inc.",
-        renderer="Intel Iris OpenGL Engine",
-        fix_hairline=True,
-)
 
 tree = {}
 
