@@ -5,8 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from selenium_stealth import stealth
-from webdriver_manager.chrome import ChromeDriverManager
+=from webdriver_manager.chrome import ChromeDriverManager
 import time
 import csv
 import os
@@ -14,7 +13,6 @@ import json
 from selenium.common.exceptions import TimeoutException
 import undetected_chromedriver as uc
 from selenium.common.exceptions import NoSuchElementException
-import tkinter as tk
 import sys
 import firebase_admin
 from firebase_admin import credentials
