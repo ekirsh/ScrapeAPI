@@ -15,6 +15,7 @@ import undetected_chromedriver as uc
 from selenium.common.exceptions import NoSuchElementException
 import sys
 import firebase_admin
+from selenium_stealth import stealth
 from firebase_admin import credentials
 from firebase_admin import firestore
 
@@ -151,6 +152,15 @@ driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () =>
 artist = sys.argv[1]
 
 url = f"https://genius.com/search?q={artist}"
+
+stealth(driver,
+        languages=["en-US", "en"],
+        vendor="Google Inc.",
+        platform="Win32",
+        webgl_vendor="Intel Inc.",
+        renderer="Intel Iris OpenGL Engine",
+        fix_hairline=True,
+)
 
 tree = {}
 
