@@ -7,13 +7,21 @@ import threading
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from fastapi.middleware.cors import CORSMiddleware
 
 cred = credentials.Certificate('genius-bot-b8355-firebase-adminsdk-bookx-2d49ab4b27.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
-
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
