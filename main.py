@@ -33,7 +33,6 @@ async def root():
 @app.post("/artists/")
 async def create_artist(data: UserSearch):
     artist_name = data.artistName
-    print(data)
     print('Artist name: {}'.format(artist_name))
     doc_ref = db.collection('artists').document(artist_name)
     doc = doc_ref.get()
@@ -41,12 +40,12 @@ async def create_artist(data: UserSearch):
     if doc.exists:
         print('Artist found in database, returning data...')
         print(doc.to_dict())
-        return jsonify(doc.to_dict())
+        return doc.to_dict()
     else:
         print('Artist not found in database, scraping...')
         scraper_thread = threading.Thread(target=run_scraper, args=(artist_name,))
         scraper_thread.start()
-        return jsonify({'message': 'Scraping artist...'})
+        return {'message': 'Scraping artist...'}
 
 def run_scraper(artist):
     cmd = ['python3', 'newtrst.py', artist]
