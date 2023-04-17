@@ -23,15 +23,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class UserSearch(BaseModel):
+    artistName: str
 
 @app.get("/")
 async def root():
     return {"message": "Hello World. Welcome to ScrapeAPI!"}
 
 @app.post("/artists/")
-async def create_artist(artistName: str):
+async def create_artist(data: UserSearcb):
+    artist_name = data.artistName
+    print(data)
     print('Artist name: {}'.format(artist_name))
-    doc_ref = db.collection('artists').document(artistName)
+    doc_ref = db.collection('artists').document(artist_name)
     doc = doc_ref.get()
     collab_ref = doc_ref.collection('collaborators')
     if doc.exists:
@@ -40,7 +44,7 @@ async def create_artist(artistName: str):
         return jsonify(doc.to_dict())
     else:
         print('Artist not found in database, scraping...')
-        scraper_thread = threading.Thread(target=run_scraper, args=(artistName,))
+        scraper_thread = threading.Thread(target=run_scraper, args=(artist_name,))
         scraper_thread.start()
         return jsonify({'message': 'Scraping artist...'})
 
