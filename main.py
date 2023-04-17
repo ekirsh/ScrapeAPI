@@ -18,6 +18,9 @@ class Msg(BaseModel):
 async def root():
     return {"message": "Hello World. Welcome to FastAPI!"}
 
+@app.post("/artists/")
+async def create_artist(artistName: str):
+    return {"artistName": artistName}
 
 @app.get("/homepage")
 async def demo_get():
