@@ -1,6 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+import sys
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
+import undetected_chromedriver as uc
+
 
 def createDriver() -> webdriver.Chrome:
     chrome_options = webdriver.ChromeOptions()
