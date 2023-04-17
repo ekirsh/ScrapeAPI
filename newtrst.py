@@ -163,6 +163,8 @@ except TimeoutException as e:
     time.sleep(2)
     driver.refresh()
 
+print(driver.page_source)
+
 try:
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,'mini_card')))
 except:
