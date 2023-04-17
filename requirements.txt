@@ -9,6 +9,7 @@ python-dotenv==0.20.0
 PyYAML==6.0
 sniffio==1.2.0
 selenium_stealth==1.0.6
+cloudscraper==1.2.69
 starlette==0.19.1
 typing_extensions==4.3.0
 uvicorn==0.18.3
