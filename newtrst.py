@@ -141,7 +141,7 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--dns-prefetch-disable")
 chrome_options.add_argument("--disable-gpu")
-driver = webdriver.Chrome(options=chrome_options, service=ser)
+driver = uc.Chrome(options=chrome_options, service=ser)
 print("Driver Initialized")
 #driver.set_page_load_timeout(10)
 driver.set_page_load_timeout(15)
@@ -149,7 +149,6 @@ driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () =>
 
 
 artist = sys.argv[1]
-artist_ref = db.collection('artists').document(artist)
 
 url = f"https://genius.com/search?q={artist}"
 
@@ -180,6 +179,8 @@ except:
     print("Critical Error 11")
     time.sleep(2)
     driver.refresh()
+
+artist_ref = db.collection('artists').document(artist_title)
 
 try:
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,'//*[contains(@class, "mini_card_grid-song")]')))
