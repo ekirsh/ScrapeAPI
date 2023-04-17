@@ -31,7 +31,7 @@ async def root():
     return {"message": "Hello World. Welcome to ScrapeAPI!"}
 
 @app.post("/artists/")
-async def create_artist(data: UserSearcb):
+async def create_artist(data: UserSearch):
     artist_name = data.artistName
     print(data)
     print('Artist name: {}'.format(artist_name))
