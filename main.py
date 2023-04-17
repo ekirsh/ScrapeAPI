@@ -28,7 +28,7 @@ class UserSearch(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World. Welcome to ScrapeAPI!"}
+    return {"message": "Hello. Welcome to ScrapeAPI!"}
 
 @app.post("/artists/")
 async def create_artist(data: UserSearch):
