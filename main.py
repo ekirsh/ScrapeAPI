@@ -34,8 +34,11 @@ async def root():
 
 @app.post("/artists/")
 async def create_artist(data: Artist):
-    print(scraper.get(f'https://genius.com/artists/{data.artistName}').text)
-    return scraper.get(f'https://genius.com/artists/{data.artistName}').text
+    driver=createDriver()
+
+    homepage = getGoogleHomepage(driver)
+    driver.close()
+    return homepage
 
 #@app.post("/artists/")
 #async def create_artist(data: Artist):
