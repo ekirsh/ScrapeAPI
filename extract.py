@@ -26,7 +26,7 @@ def createDriver() -> webdriver.Chrome:
     return myDriver
 
 def getGoogleHomepage(driver: webdriver.Chrome) -> str:
-    driver.get("https://genius.com/artists/Sabrina-carpenter")
+    driver.get("https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M")
     return driver.page_source
 
 def doBackgroundTask(inp):
