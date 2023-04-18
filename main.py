@@ -38,6 +38,7 @@ async def create_artist(data: Artist):
 
     homepage = getGoogleHomepage(driver)
     driver.close()
+    print(homepage)
     return homepage
 
 #@app.post("/artists/")
